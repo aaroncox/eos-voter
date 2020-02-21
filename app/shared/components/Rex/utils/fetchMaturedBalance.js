@@ -5,8 +5,8 @@ export default function fetchMaturedBalance(tables, account) {
   let maturedMaturitiesTotal = 0;
 
   rexMaturities.forEach(maturity => {
-    if (new Date(`${maturity.first}Z`) < new Date()) {
-      maturedMaturitiesTotal += Number(maturity.second);
+    if (new Date(`${maturity.key}Z`) < new Date()) {
+      maturedMaturitiesTotal += Number(maturity.value);
     }
   });
 

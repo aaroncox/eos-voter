@@ -72,7 +72,7 @@ class RexLendSavings extends PureComponent<Props> {
 
       const rexBalance = get(tables, `eosio.eosio.rexbal.${escapedAccountName}.rows.0.rex_balance`, '0.0000 REX');
       const rexMaturities = get(tables, `eosio.eosio.rexbal.${escapedAccountName}.rows.0.rex_maturities`, []);
-      const rexInSavings = (find(rexMaturities, { first: '2106-02-07T06:28:15' }) || { second: 0 }).second / 10000;
+      const rexInSavings = (find(rexMaturities, { key: '2106-02-07T06:28:15' }) || { value: 0 }).value / 10000;
 
       let notEnoughBalance = false;
       let notEnoughBalanceInSavings = false;
@@ -152,7 +152,7 @@ class RexLendSavings extends PureComponent<Props> {
 
     const rexBalance = get(tables, `eosio.eosio.rexbal.${escapedAccountName}.rows.0.rex_balance`, '0.0000 REX');
     const rexMaturities = get(tables, `eosio.eosio.rexbal.${escapedAccountName}.rows.0.rex_maturities`, []);
-    const rexInSavings = `${(find(rexMaturities, { first: '2106-02-07T06:28:15' }) || { second: 0 }).second / 10000} REX`;
+    const rexInSavings = `${(find(rexMaturities, { key: '2106-02-07T06:28:15' }) || { value: 0 }).value / 10000} REX`;
 
     const confirmationPage = confirming ? (
       <GlobalTransactionModal
